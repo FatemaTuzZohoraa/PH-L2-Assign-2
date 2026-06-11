@@ -1,4 +1,5 @@
 import express, { type Application, type Request, type Response } from "express"
+import { userRouter } from "./modules/user/user.route"
 
 const app:Application=express()
 
@@ -15,5 +16,7 @@ app.get('/', (req:Request, res:Response) => {
     "author":"Fatemaaaaa"
   })
 })
+
+app.use('/api/users',userRouter)
 
 export default app
