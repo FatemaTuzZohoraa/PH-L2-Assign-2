@@ -1,8 +1,7 @@
 import express, { type Application, type Request, type Response } from "express"
-import { userRouter } from "./modules/user/user.route"
+import { authRouter } from "./modules/auth/auth.route"
 
 const app:Application=express()
-
 
 app.use(express.json())
 app.use(express.text())
@@ -17,6 +16,6 @@ app.get('/', (req:Request, res:Response) => {
   })
 })
 
-app.use('/api/users',userRouter)
+app.use('/api/auth',authRouter)
 
 export default app
