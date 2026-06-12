@@ -1,6 +1,7 @@
 import express, { type Application, type Request, type Response } from "express"
 import { authRoute } from "./modules/auth/auth.route"
 import CookieParser from  "cookie-parser"
+import { issuesRoute } from "./modules/issues/issues.route"
 
 const app:Application=express()
 
@@ -19,5 +20,6 @@ app.get('/', (req:Request, res:Response) => {
 })
 
 app.use('/api/auth',authRoute)
+app.use('/api/issues',issuesRoute)
 
 export default app

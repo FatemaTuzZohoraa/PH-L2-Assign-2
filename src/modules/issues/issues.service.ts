@@ -32,7 +32,7 @@ const updateIssueFromDB=async(payload:IIssue,id:string)=>{
     SET 
     title=COALESCE($1,title),
     description=COALESCE($2,description),
-    type=COALESCE($3,type),
+    type=COALESCE($3,type)
     WHERE id=$4 
     RETURNING *
     `,[title,description,type,id])
@@ -42,8 +42,8 @@ const updateIssueFromDB=async(payload:IIssue,id:string)=>{
 }
 const deleteIssueFromDB=async(id:string)=>{
    const result = await pool.query(`
-    DELETE FROM Issues WHERE id=$1
-    
+    DELETE FROM Issues WHERE id=$1 
+     RETURNING *  
     `,[id])
     return result
 }
