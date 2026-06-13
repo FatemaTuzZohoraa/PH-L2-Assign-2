@@ -6,7 +6,7 @@ DevPulse Issue Tracker API is a backend application built to manage bug reports 
 
 ## Live URL
 
-Live API: https://assign-2-ruddy.vercel.app/
+Live API: [https://assign-2-ruddy.vercel.app/](https://assign-2-fatematuzzohora070-9819-fatemas-projects-19d467a5.vercel.app/)
 
 ## Features
 
