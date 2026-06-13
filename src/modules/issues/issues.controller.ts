@@ -8,7 +8,12 @@ const createIssue=async(req:Request,res:Response)=>{
   
 
   try{
-    const result=await IssueService.createIssueIntoDB(req.body)
+    const payload = {
+  ...req.body,
+  reporter_id: (req as any).user.id,
+};
+
+const result = await IssueService.createIssueIntoDB(payload);
 
  
   sendResponse(res,{
@@ -78,16 +83,37 @@ const updateIssue=async(req:Request,res:Response)=>{
   
 
   try {
+    const issue = await IssueService.getSingleIssueFromDB(id as string);
+
+if (issue.rows.length === 0) {
+  return res.status(404).json({
+    success: false,
+    message: "Issue not found",
+    data: {}
+  });
+}
+
+const currentIssue = issue.rows[0];
+const user = (req as any).user;
+
+const canUpdate =
+  user.role === "maintainer" ||
+  (
+    user.role === "contributor" &&
+    currentIssue.reporter_id === user.id &&
+    currentIssue.status === "open"
+  );
+
+if (!canUpdate) {
+  return res.status(403).json({
+    success: false,
+    message: "Forbidden"
+  });
+}
     
     const result=await IssueService.updateIssueFromDB(req.body,id as string)
 
-    if(result.rows.length===0){
-      res.status(404).json({
-        success:false,
-        message:"Issue not found",
-        data:{}
-      })
-    }
+   
 
     res.status(200).json({
         success:true,

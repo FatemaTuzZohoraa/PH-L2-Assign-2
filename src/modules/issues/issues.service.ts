@@ -1,13 +1,13 @@
 import { pool } from "../../db"
 import type { IIssue } from "./issues.interface";
 
-const createIssueIntoDB=async(payload:IIssue)=>{const {title,description,type}=payload;
+const createIssueIntoDB=async(payload:IIssue)=>{const {title,description,type,reporter_id}=payload;
 
 
 const result=await pool.query(`
-  INSERT INTO Issues(title,description,type) VALUES($1,$2,$3)
+  INSERT INTO Issues(title,description,type,reporter_id) VALUES($1,$2,$3,$4)
   RETURNING *
-  `,[title,description,type])
+  `,[title,description,type,reporter_id])
 
   return result;
 }
