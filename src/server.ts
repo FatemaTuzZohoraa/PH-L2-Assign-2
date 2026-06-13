@@ -3,10 +3,14 @@ import config from "./config";
 import { initDB } from "./db"
 
 
-const main=()=>{
-    initDB();
-    app.listen(config.port,()=>{
-      console.log(`APP LISTENING ON PORT ${config.port}`);
-    })
+initDB();
+
+// Start server only when not on Vercel (local dev)
+if (!process.env.VERCEL) {
+  app.listen(config.port, () => {
+    console.log(`APP LISTENING ON PORT ${config.port}`);
+  });
 }
-main()
+
+// Export for Vercel serverless
+export default app;
