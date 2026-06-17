@@ -1,7 +1,7 @@
 import express, { type Application, type Request, type Response } from "express"
-import { authRoute } from "./modules/auth/auth.route"
+import { authRoute } from "./modules/auth/auth.route.js"
 import CookieParser from  "cookie-parser"
-import { issuesRoute } from "./modules/issues/issues.route"
+import { issuesRoute } from "./modules/issues/issues.route.js"
 
 const app:Application=express()
 

@@ -1,7 +1,7 @@
-import { pool } from "../../db";
-import type { IUser } from "./auth.interface";
+import { pool } from "../../db/index.js";
+import type { IUser } from "./auth.interface.js";
 import bcrypt from "bcryptjs"
-import config from "../../config"
+import config from "../../config/index.js"
 
 import jwt, { type JwtPayload } from "jsonwebtoken"
 

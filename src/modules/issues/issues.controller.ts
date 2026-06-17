@@ -1,7 +1,7 @@
 import type { Request, Response } from "express";
-import { pool } from "../../db";
-import { IssueService } from "./issues.service";
-import sendResponse from "../../utility/sendResponse";
+import { pool } from "../../db/index.js";
+import { IssueService } from "./issues.service.js";
+import sendResponse from "../../utility/sendResponse.js";
 
 
 const createIssue=async(req:Request,res:Response)=>{

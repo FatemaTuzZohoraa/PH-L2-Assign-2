@@ -1,7 +1,7 @@
 import type { Request, Response } from "express";
 
-import sendResponse from "../../utility/sendResponse";
-import { authService } from "./auth.service";
+import sendResponse from "../../utility/sendResponse.js";
+import { authService } from "./auth.service.js";
 
 const registerUser=async(req:Request,res:Response)=>{
 
